@@ -174,19 +174,19 @@ class Milvus(VectorStore):
         else:
             tmp_user = ""
 
-        # If a valid address was given, then check if a connection exists
-        if given_address is not None:
-            for con in connections.list_connections():
-                addr = connections.get_connection_addr(con[0])
-                if (
-                    con[1]
-                    and ("address" in addr)
-                    and (addr["address"] == given_address)
-                    and ("user" in addr)
-                    and (addr["user"] == tmp_user)
-                ):
-                    logger.debug("Using previous connection: %s", con[0])
-                    return con[0]
+        # # If a valid address was given, then check if a connection exists
+        # if given_address is not None:
+        #     for con in connections.list_connections():
+        #         addr = connections.get_connection_addr(con[0])
+        #         if (
+        #             con[1]
+        #             and ("address" in addr)
+        #             and (addr["address"] == given_address)
+        #             and ("user" in addr)
+        #             and (addr["user"] == tmp_user)
+        #         ):
+        #             logger.debug("Using previous connection: %s", con[0])
+        #             return con[0]
 
         # Generate a new connection if one doesnt exist
         alias = uuid4().hex
